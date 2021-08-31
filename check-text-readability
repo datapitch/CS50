@@ -1,0 +1,83 @@
+/*
+    Ben Adenle / datapitch@gmail.com
+    This program checks and grade readability of a text based on Coleman-Liau index
+*/
+
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+
+int main(void)
+{
+    //Prompt user for text input
+
+    string text = get_string("Text: ");
+
+    //Get length of string
+    int len = strlen(text);
+
+
+    //Count the number of characters
+
+    int count_char = 0;
+
+    for (int i = 0; i <= len; i++)
+    {
+        if ((text[i]  >= 'A' && text[i]  <= 'Z') || (text[i] >= 'a' && text[i] <= 'z'))
+        {
+
+            count_char++;
+
+        cd}
+
+    }
+
+    //Count the number of words
+    int count_words = 1;
+    for (int j = 0; j <= len; j++)
+    {
+      if (text[j]  == ' ')
+
+
+            count_words++;
+
+    }
+
+    //Count the number of sentences
+    int count_sents = 0;
+
+    for (int k = 0; k <= len; k++)
+    {
+      if (text[k]  == '.' || text[k]  == '!' ||  text[k]  == '?')
+
+
+        count_sents++;
+
+    }
+
+
+    //plug in variables for the  Coleman-Liau index
+
+    float L = count_char / (count_words * 0.01);
+
+    float S = count_sents / (count_words * 0.01);
+
+    float index = (0.0588 * L) - (0.296 * S) - 15.8;
+
+    index = roundf(index); //round off float ti the closest integer
+
+    //Output grade
+    if (index < 0)
+    {
+        printf("Before Grade 1\n");
+    }
+    else if (index > 16)
+    {
+        printf("Grade 16+\n");
+    }
+    else
+    {
+        printf("Grade %.f\n", index);
+    }
+}
