@@ -1,4 +1,5 @@
 //Program checks validity of credit card and returns brand if true, else, returns invalid
+//Ben Adenle / datapitch@gmail.com
 
 #include <cs50.h>
 #include <stdio.h>
